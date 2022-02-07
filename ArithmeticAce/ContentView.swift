@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack (spacing: 110) {
+            HStack (spacing: 140) {
                 VStack (spacing: 65){
                 Spacer()
                 Text("×")
