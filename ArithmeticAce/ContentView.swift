@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // MARK: Stored Properties
+    let multiplicand = Int.random(in:1...12)
+    let multiplier = Int.random(in:1...12)
+    @State var inputGiven = ""
+    
+    // MARK: Computed Propeties
     var body: some View {
         VStack {
             Spacer()
@@ -21,17 +28,17 @@ struct ContentView: View {
                         .resizable()
                         .foregroundColor(.green)
                         .scaledToFit()
-                        .frame(width: 80, height: 80)
+                        .frame(width: 72, height: 72)
                 Spacer()
                 }
-                VStack {
-                    Text("5")
+                VStack (alignment: .trailing){
+                    Text("\(multiplicand)")
                         .font(.system(size: 72))
-                    Text("6")
+                    Text("\(multiplier)")
                         .font(.system(size: 72))
                         .padding(.bottom)
-                    Text("30")
-                        .font(.system(size: 72))
+                    TextField("Type the Answer", text: $inputGiven)
+
                 }
             }
             Button(action: {
