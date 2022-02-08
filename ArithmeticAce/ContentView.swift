@@ -101,6 +101,7 @@ struct ContentView: View {
             }
             .buttonStyle(.bordered)
             .opacity(cAOpacity ? 1.0 : 0.0)
+            .opacity(input == nil ? 0.0 : 1.0)
             
             Spacer(minLength: 35)
             
