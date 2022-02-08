@@ -10,11 +10,22 @@ import SwiftUI
 struct ContentView: View {
     
     // MARK: Stored Properties
-    let multiplicand = Int.random(in:1...12)
-    let multiplier = Int.random(in:1...12)
+    @State var multiplicand = Int.random(in:1...12)
+    @State var multiplier = Int.random(in:1...12)
     @State var inputGiven = ""
     
     @State var checkmarkTrue = false
+    
+    var input: Double? {
+        guard let input =
+                Double(inputGiven),
+              input > 0
+        else {
+            return nil
+        }
+        
+        return input
+    }
     
     // MARK: Computed Propeties
     var correctProduct: Int {
@@ -25,20 +36,20 @@ struct ContentView: View {
             Spacer()
             HStack (spacing: 130) {
                 VStack (spacing: 65){
-                Spacer()
-                Text("×")
+                    Spacer()
+                    Text("×")
                         .font(.system(size: 72))
                         .padding(.top,80)
                         .padding(.leading)
-                Spacer()
-                Image(systemName: "checkmark.circle")
+                    Spacer()
+                    Image(systemName: "checkmark.circle")
                         .resizable()
                         .foregroundColor(.green)
                         .scaledToFit()
                         .frame(width: 72, height: 72)
                         .padding(.leading)
                         .opacity(checkmarkTrue ? 1.0 : 0.0)
-                Spacer()
+                    Spacer()
                 }
                 VStack (alignment: .trailing){
                     Text("\(multiplicand)")
@@ -46,8 +57,10 @@ struct ContentView: View {
                     Text("\(multiplier)")
                         .font(.system(size: 72))
                         .padding(.bottom)
-                    TextField("Type the Answer", text: $inputGiven)
+                    TextField("Type The Correct Answer",
+                              text: $inputGiven)
                         .padding(.top, 90)
+                        .foregroundColor(input == nil ? Color.red : Color.primary)
                 }
                 .padding(.trailing)
             }
@@ -68,16 +81,21 @@ struct ContentView: View {
             }
             .buttonStyle(.bordered)
             
+            Spacer(minLength: 35)
+            
             Button(action: {
-                
-                }
+                checkmarkTrue = false
+                multiplicand = Int.random(in:1...12)
+                multiplier = Int.random(in:1...12)
+                inputGiven = ""
             }) {
                 Text("New Equation")
                     .font(.title2)                    .padding()
+                    .foregroundColor(.green)
             }
             .buttonStyle(.bordered)
             
-            Spacer(minLength: 200)
+            Spacer(minLength: 150)
         }
     }
 }
