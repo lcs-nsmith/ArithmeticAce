@@ -15,6 +15,8 @@ struct ContentView: View {
     @State var inputGiven = ""
     
     @State var checkmarkTrue = false
+    @State var whiteBoxAllumer = true
+    @State var cAOpacity = true
     
     var input: Double? {
         guard let input =
@@ -42,6 +44,7 @@ struct ContentView: View {
                         .padding(.top,80)
                         .padding(.leading)
                     Spacer()
+                    ZStack {
                     Image(systemName: "checkmark.circle")
                         .resizable()
                         .foregroundColor(.green)
@@ -49,6 +52,21 @@ struct ContentView: View {
                         .frame(width: 72, height: 72)
                         .padding(.leading)
                         .opacity(checkmarkTrue ? 1.0 : 0.0)
+                    Image(systemName: "x.square")
+                            .resizable()
+                            .foregroundColor(.red)
+                            .scaledToFit()
+                            .frame(width: 72, height: 72)
+                            .padding(.leading)
+                            .opacity(checkmarkTrue ? 0.0 : 1.0)
+                    Image(systemName: "square.fill")
+                            .resizable()
+                            .foregroundColor(.white)
+                            .scaledToFit()
+                            .frame(width: 72, height: 72)
+                            .padding(.leading)
+                            .opacity(whiteBoxAllumer == true ? 1.0 : 0.0)
+                    }
                     Spacer()
                 }
                 VStack (alignment: .trailing){
@@ -65,6 +83,8 @@ struct ContentView: View {
                 .padding(.trailing)
             }
             Button(action: {
+                whiteBoxAllumer = false
+                cAOpacity = false
                 // Convert inputGiven to int
                 guard let productGiven = Int(inputGiven) else {
                     return
@@ -80,6 +100,7 @@ struct ContentView: View {
                     .font(.title2)                    .padding()
             }
             .buttonStyle(.bordered)
+            .opacity(cAOpacity ? 1.0 : 0.0)
             
             Spacer(minLength: 35)
             
@@ -88,6 +109,8 @@ struct ContentView: View {
                 multiplicand = Int.random(in:1...12)
                 multiplier = Int.random(in:1...12)
                 inputGiven = ""
+                whiteBoxAllumer = true
+                cAOpacity = true
             }) {
                 Text("New Equation")
                     .font(.title2)                    .padding()
