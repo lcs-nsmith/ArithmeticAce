@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MultiplicationView: View {
     
     // MARK: Stored Properties
     @State var multiplicand = Int.random(in:1...12)
@@ -45,21 +45,21 @@ struct ContentView: View {
                         .padding(.leading)
                     Spacer()
                     ZStack {
-                    Image(systemName: "checkmark.circle")
-                        .resizable()
-                        .foregroundColor(.green)
-                        .scaledToFit()
-                        .frame(width: 72, height: 72)
-                        .padding(.leading)
-                        .opacity(checkmarkTrue ? 1.0 : 0.0)
-                    Image(systemName: "x.square")
+                        Image(systemName: "checkmark.circle")
+                            .resizable()
+                            .foregroundColor(.green)
+                            .scaledToFit()
+                            .frame(width: 72, height: 72)
+                            .padding(.leading)
+                            .opacity(checkmarkTrue ? 1.0 : 0.0)
+                        Image(systemName: "x.square")
                             .resizable()
                             .foregroundColor(.red)
                             .scaledToFit()
                             .frame(width: 72, height: 72)
                             .padding(.leading)
                             .opacity(checkmarkTrue ? 0.0 : 1.0)
-                    Image(systemName: "square.fill")
+                        Image(systemName: "square.fill")
                             .resizable()
                             .foregroundColor(.white)
                             .scaledToFit()
@@ -79,6 +79,9 @@ struct ContentView: View {
                               text: $inputGiven)
                         .padding(.top, 90)
                         .foregroundColor(input == nil ? Color.red : Color.primary)
+                        
+                        
+                        
                 }
                 .padding(.trailing)
             }
@@ -124,8 +127,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MultiplicationView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MultiplicationView()
     }
 }
