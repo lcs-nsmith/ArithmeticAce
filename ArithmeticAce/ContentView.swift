@@ -37,7 +37,7 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(width: 72, height: 72)
                         .padding(.leading)
-                        .opacity(1)
+                        .opacity(checkmarkTrue ? 1.0 : 0.0)
                 Spacer()
                 }
                 VStack (alignment: .trailing){
@@ -67,6 +67,16 @@ struct ContentView: View {
                     .font(.title2)                    .padding()
             }
             .buttonStyle(.bordered)
+            
+            Button(action: {
+                
+                }
+            }) {
+                Text("New Equation")
+                    .font(.title2)                    .padding()
+            }
+            .buttonStyle(.bordered)
+            
             Spacer(minLength: 200)
         }
     }
