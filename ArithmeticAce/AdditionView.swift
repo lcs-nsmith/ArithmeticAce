@@ -70,18 +70,18 @@ struct AdditionView: View {
                     Spacer()
                 }
                 VStack (alignment: .trailing){
-                    Text("\(multiplicand)")
+                    Text("\(augend)")
                         .font(.system(size: 72))
-                    Text("\(multiplier)")
+                    Text("\(addend)")
                         .font(.system(size: 72))
                         .padding(.bottom)
                     TextField("Type The Correct Answer",
                               text: $inputGiven)
                         .padding(.top, 90)
                         .foregroundColor(input == nil ? Color.red : Color.primary)
-                        
-                        
-                        
+                    
+                    
+                    
                 }
                 .padding(.trailing)
             }
@@ -110,8 +110,8 @@ struct AdditionView: View {
             
             Button(action: {
                 checkmarkTrue = false
-                multiplicand = Int.random(in:1...12)
-                multiplier = Int.random(in:1...12)
+                augend = Int.random(in:1...12)
+                addend = Int.random(in:1...12)
                 inputGiven = ""
                 whiteBoxAllumer = true
                 cAOpacity = true
