@@ -75,14 +75,14 @@ struct AdditionView: View {
                     Text("\(addend)")
                         .font(.system(size: 72))
                         .padding(.bottom)
-                    TextField("Type The Correct Answer",
+                    TextField("____",
                               text: $inputGiven)
-                        .padding(.top, 90)
                         .foregroundColor(input == nil ? Color.red : Color.primary)
                     
                     
                     
                 }
+                .font(.system(size: 72))
                 .padding(.trailing)
             }
             Button(action: {

@@ -11,7 +11,9 @@ import SwiftUI
 struct ArithmeticAceApp: App {
     var body: some Scene {
         WindowGroup {
-            MultiplicationView()
+            NavigationView {
+                MenuView()
+            }
         }
     }
 }
